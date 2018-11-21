@@ -10,6 +10,7 @@ public class Main {
 		int gridSize;
 		int bombs = 0;
 		boolean notTooBig = false;
+		boolean carryOn = true;
 
 		System.out.println("Enter grid size: ");
 		gridSize = sc.nextInt();
@@ -26,10 +27,11 @@ public class Main {
 			}
 		}
 		Minesweeper ms = new Minesweeper(gridSize, bombs);
-
-		ms.populateGrid();
-		ms.showGrid();
-
+		while(carryOn) {
+			ms.populateGrid();
+			ms.showPlayerGrid();
+			carryOn = ms.playerMove();
+		}
 		sc.close();
 	}
 
